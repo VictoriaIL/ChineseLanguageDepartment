@@ -1,5 +1,5 @@
 export default {
-    SERVER_URL: 'https://chinese-dept-server.onrender.com',
+    SERVER_URL: 'https://chinese-dept-server.onrender.com/',
     UPLOAD : 'file/upload',
     DELETE: 'file/delete/file/',
     UPLOAD_FILE: 'file/upload/file',
