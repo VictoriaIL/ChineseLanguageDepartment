@@ -8,6 +8,7 @@
 
     a {
       color: $navColor;
+      display: block;
 
       &:hover {
         color: $linkHoverColor;
@@ -33,23 +34,23 @@
     }
   }
 
-  &__media {
-    align-items: center;
-    display: flex;
-    justify-content: space-evenly;
-
-    a {
-      display: block;
-      height: 30px;
-      width: 30px;
-
-      img {
-        border-radius: 50%;
-        height: 100%;
-        width: 100%;
-      }
-    }
-  }
+  //&__media {
+  //  align-items: center;
+  //  display: flex;
+  //  justify-content: space-evenly;
+  //
+  //  a {
+  //    display: block;
+  //    height: 30px;
+  //    width: 30px;
+  //
+  //    img {
+  //      border-radius: 50%;
+  //      height: 100%;
+  //      width: 100%;
+  //    }
+  //  }
+  //}
 }
 
 .ant-card-head {

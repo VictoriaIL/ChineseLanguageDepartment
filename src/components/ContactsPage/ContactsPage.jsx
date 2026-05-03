@@ -32,28 +32,30 @@ const ContactsPage = ({ path, setFetchedData, data, history, setHistory }) => {
     }
   }, []);
 
-  const { addressPlace, addressRoom, phone, email, label, heading } = data;
+  const { addressPlace, mobile, email, label, heading } = data;
 
   const page = (
     <>
       <Label text={label} />
       <div className="ContactsPage__layout">
         <Card className="ContactsPage__card" title={heading}>
+          <b>Адрес: </b>
           <p>{addressPlace}</p>
-          <p>{addressRoom}</p>
           <p>
-            <a href={`tel:${phone}`}>{phone}</a>
+            <b>Телефон: </b>
+            <a href={`tel:${mobile}`}>{mobile}</a>
           </p>
           <p>
+            <b>Email: </b>
             <a href={`mailto:${email}`}>{email}</a>
           </p>
-          <div className="ContactsPage__media">
-            {media(data).map(({ link, icon }) => (
-              <a target="_blank" key={generateRandomId()} href={link}>
-                <img src={icon} alt="mslu" />
-              </a>
-            ))}
-          </div>
+          {/*<div className="ContactsPage__media">*/}
+          {/*  {media(data).map(({ link, icon }) => (*/}
+          {/*    <a target="_blank" key={generateRandomId()} href={link}>*/}
+          {/*      <img src={icon} alt="mslu" />*/}
+          {/*    </a>*/}
+          {/*  ))}*/}
+          {/*</div>*/}
         </Card>
         <Map address={addressPlace} />
       </div>
