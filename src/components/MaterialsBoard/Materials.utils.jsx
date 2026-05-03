@@ -161,13 +161,13 @@ export const renderScienceMaterials = (path, arr) => {
               return (
                 <div className="Materials__item" key={name}>
                   <a target="_blank" href={url}>{`${index + 1}. ${name}`}</a>
-                  <span>{`${published}`}</span>
-                  <span>{` - Год издания: ${getFormattedDate(
+                  <p>{`${published}`}</p>
+                  <p>{` - Год издания: ${getFormattedDate(
                     date,
                     path
-                  )}`}</span>
-                  <span>{` - Место издания: ${place}`}</span>
-                  <span>{` - Автор/ы: ${author}`}</span>
+                  )}`}</p>
+                  <p>{` - Место издания: ${place}`}</p>
+                  <p>{` - Автор/ы: ${author}`}</p>
                 </div>
               );
             })}

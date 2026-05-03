@@ -1,6 +1,9 @@
 @import '../../global-styles/global.scss';
 
 .TableView {
+  margin-top: 15px;
+  margin-bottom: auto;
+
   &__img {
     object-fit: contain;
     width: 100%;

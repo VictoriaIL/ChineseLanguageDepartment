@@ -15,13 +15,13 @@ export const createColumnsScienceMaterials = (openModal) => [
     title: () => <EditTwoTone twoToneColor="#a52423" />,
     dataIndex: '_id',
     key: generateRandomId(),
-    render: (_id) => (
+    render: (_, record) => (
       <Tooltip placement="right" title={change_data}>
         <Button
           type="dashed"
           size="small"
           icon={<EditTwoTone twoToneColor="#a52423" />}
-          onClick={() => openModal(_id)}
+          onClick={() => openModal(record._id)}
         />
       </Tooltip>
     ),
