@@ -3,9 +3,9 @@
 
 .Map {
   box-shadow: 0 3px 20px 0 $shadowColor;
-  height: 400px;
+  height: 500px;
   margin-top: 10px;
-  max-width: 500px;
+  max-width: 600px;
   width: 40%;
 
   @include media-mobile {
