@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
-import { Carousel } from 'antd';
+import { Carousel, Empty } from 'antd';
 import { Link } from '@reach/router';
 
 import './Slider.scss';
@@ -22,6 +22,14 @@ const Slider = ({ teacherInfo, setTeacherIndex }) => {
   const handlePrevSlide = () => {
     carouselRef.current.prev();
   };
+
+  if (!teacherInfo || !teacherInfo.length) {
+    return (
+      <div className="Slider">
+        <Empty description="Нет преподавателей" />
+      </div>
+    );
+  }
 
   return (
     <div className="Slider">

@@ -84,3 +84,11 @@
   height: 100%;
   margin: 0;
 }
+
+.NewsCard__empty {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 300px;
+  width: 100%;
+}

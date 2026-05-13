@@ -21,6 +21,14 @@ const NewsCard = ({ allNews, newsPerPage, currentNewsPage, setModalOpen }) => {
     setModalOpen(true, id);
   };
 
+  if (!news || !news.length) {
+    return (
+      <div className="NewsCard__empty">
+        <Empty description="Нет новостей" />
+      </div>
+    );
+  }
+
   return news
     ? news.map(({ photos, description, title, date, _id }, index) => {
         return (
