@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ReactPhotoCollage } from 'react-photo-collage';
 import { Empty } from 'antd';
 
 import { generateRandomId } from '../../utils';
@@ -13,18 +12,6 @@ import { ACTIONS } from '../../store/actions/creators';
 
 const NewsModal = ({ setModalOpen, allNews, index }) => {
   const currentNewsObj = allNews.news.filter((obj) => obj._id === index)[0];
-  const photosForCollage = currentNewsObj.photos.map((url) => {
-    return {
-      src: url,
-    };
-  });
-  const collageSetting = {
-    width: '100%',
-    height: ['250px', '160px'],
-    layout: [1, 3],
-    photos: photosForCollage,
-    showNumOfRemainingPhotos: true,
-  };
 
   const closeModal = () => {
     setModalOpen(false);
@@ -37,7 +24,11 @@ const NewsModal = ({ setModalOpen, allNews, index }) => {
           <div className="Modal__content">
             <div className="Modal__collage">
               {currentNewsObj.photos.length ? (
-                <ReactPhotoCollage {...collageSetting} />
+                <div className="Modal__gallery">
+                  {currentNewsObj.photos.map((url, i) => (
+                    <img key={i} className="Modal__gallery-img" src={url} alt="" />
+                  ))}
+                </div>
               ) : (
                 <Empty description="Нет фото" />
               )}

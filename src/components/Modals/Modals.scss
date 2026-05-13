@@ -78,6 +78,25 @@
     }
   }
 
+  &__gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  &__gallery-img {
+    width: calc(50% - 2px);
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex: 1 1 auto;
+
+    &:first-child {
+      width: 100%;
+      height: 250px;
+    }
+  }
+
   &__content {
     display: flex;
     height: auto;
