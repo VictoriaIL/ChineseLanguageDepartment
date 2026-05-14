@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useHttp } from '../../utils';
 import { connect } from 'react-redux';
 
@@ -7,17 +7,14 @@ import { Spin } from 'antd';
 import './About.scss';
 
 import { URLS, CONSTANTS } from '../../constants';
-import { contactsElement } from './utils';
 
-import Button from '../Button';
 import Label from '../Label';
 
 import { ACTIONS } from '../../store/actions/creators';
 
 const About = ({ setFetchedData, data, path, history, setHistory }) => {
   const { request } = useHttp();
-  const [isContacts, setContacts] = useState(false);
-  const { ABOUT_PAGE, CONTACTS } = CONSTANTS;
+  const { ABOUT_PAGE } = CONSTANTS;
 
   useEffect(() => {
     const oldPage = history.find((item) => item.page === path);
@@ -33,61 +30,101 @@ const About = ({ setFetchedData, data, path, history, setHistory }) => {
     }
   }, []);
 
-  const openModal = () => {
-    setContacts(true);
-  };
-
   const {
-    mainDescription,
-    featuresInfo,
-    featuresTitle,
-    heading,
     label,
+    heading,
+    mainDescription,
+    featuresTitle,
+    featuresInfo,
     detailsTitle,
     detailsInfo,
-    addressPlace,
     photo,
+    addressPlace,
     addressRoom,
     mailName,
     email,
+    mobile,
+    personEmail,
+    personWebsite,
   } = data;
 
   const aboutElement = (
-    <>
-      <Label text={label} />
-      <h3 className="About__title">{heading}</h3>
-      <div className="About__description">
-        <div className="About__description_info">{mainDescription}</div>
-        <div className="About__description_features">
-          <h3>{featuresTitle}</h3>
-          {featuresInfo}
-        </div>
-      </div>
-      <div className="About__admin">
-        <div className="About__admin_info">
-          <h3>{detailsTitle}</h3>
-          <span className="About__admin_name">{detailsInfo}</span>
-          <div className="About__admin_contacts">
-            <span>{addressPlace}</span> {addressRoom}
-            <br />
-            <span>{mailName}</span> {''}
-            <a href={`mailto:${email}`}>{email}</a>
+    <div className="About__content">
+      <div className="About__left">
+        <Label text={label} />
+        <h3 className="About__title">{heading}</h3>
+
+        {mainDescription && (
+          <div className="About__description_info">{mainDescription}</div>
+        )}
+
+        {featuresTitle && (
+          <div className="About__features">
+            <h3 className="About__features_title">{featuresTitle}</h3>
+            {featuresInfo && (
+              <div className="About__features_info">{featuresInfo}</div>
+            )}
           </div>
-        </div>
-        <div className="About__admin_details">
-          {isContacts ? (
-            contactsElement(data)
-          ) : (
-            <div className="About__admin_photo">
-              <img src={photo} />
-            </div>
-          )}
-          {!isContacts && (
-            <Button className="About__btn" text={CONTACTS} fn={openModal} />
-          )}
-        </div>
+        )}
       </div>
-    </>
+
+      <div className="About__right">
+        {photo && (
+          <div className="About__photo">
+            <img src={photo} alt={detailsInfo} />
+          </div>
+        )}
+
+        {(detailsTitle || detailsInfo) && (
+          <div className="About__contacts">
+            <h3 className="About__contacts_title">
+              {detailsTitle || 'Заведующий кафедрой'}
+            </h3>
+            {detailsInfo && (
+              <p className="About__contacts_name">{detailsInfo}</p>
+            )}
+
+            {addressPlace && (
+              <p className="About__contacts_item">
+                <span>Адрес:</span>{' '}
+                {addressPlace}
+                {/*{addressRoom}*/}
+              </p>
+            )}
+
+            {email && (
+              <p className="About__contacts_item">
+                <span>{mailName || 'E-mail:'}</span>{' '}
+                <a href={`mailto:${email}`}>{email}</a>
+              </p>
+            )}
+
+            {mobile && (
+              <p className="About__contacts_item">
+                <span>Телефон:</span>{' '}
+                <a href={`tel:${mobile}`}>{mobile}</a>
+              </p>
+            )}
+
+            {personEmail && (
+              <p className="About__contacts_item">
+                <span>Личный e-mail:</span>{' '}
+                <a href={`mailto:${personEmail}`}>{personEmail}</a>
+              </p>
+            )}
+
+            {/*{personWebsite && (*/}
+            {/*  <p className="About__contacts_item">*/}
+            {/*    <span>Сайт:</span>{' '}*/}
+            {/*    <a href={personWebsite} target="_blank" rel="noopener noreferrer">*/}
+            {/*      {personWebsite}*/}
+            {/*    </a>*/}
+            {/*  </p>*/}
+            {/*)}*/}
+          </div>
+        )}
+      </div>
+    </div>
   );
 
   return (
