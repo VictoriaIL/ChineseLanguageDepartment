@@ -83,45 +83,61 @@ const About = ({ setFetchedData, data, path, history, setHistory }) => {
             {detailsInfo && (
               <p className="About__contacts_name">{detailsInfo}</p>
             )}
-
-            {addressPlace && (
-              <p className="About__contacts_item">
-                <span>Адрес:</span>{' '}
-                {addressPlace}
-                {/*{addressRoom}*/}
-              </p>
-            )}
-
-            {email && (
-              <p className="About__contacts_item">
-                <span>{mailName || 'E-mail:'}</span>{' '}
-                <a href={`mailto:${email}`}>{email}</a>
-              </p>
-            )}
-
-            {mobile && (
-              <p className="About__contacts_item">
-                <span>Телефон:</span>{' '}
-                <a href={`tel:${mobile}`}>{mobile}</a>
-              </p>
-            )}
-
-            {personEmail && (
-              <p className="About__contacts_item">
-                <span>Личный e-mail:</span>{' '}
-                <a href={`mailto:${personEmail}`}>{personEmail}</a>
-              </p>
-            )}
-
-            {/*{personWebsite && (*/}
-            {/*  <p className="About__contacts_item">*/}
-            {/*    <span>Сайт:</span>{' '}*/}
-            {/*    <a href={personWebsite} target="_blank" rel="noopener noreferrer">*/}
-            {/*      {personWebsite}*/}
-            {/*    </a>*/}
-            {/*  </p>*/}
-            {/*)}*/}
           </div>
+        )}
+
+        {(personEmail || personWebsite) && (
+          <>
+            <div className="About__divider" />
+            <div className="About__contacts">
+              <h3 className="About__contacts_subtitle">Контакты: </h3>
+
+              {personEmail && (
+                <p className="About__contacts_item">
+                  <span>Личный e-mail:</span>{' '}
+                  <a href={`mailto:${personEmail}`}>{personEmail}</a>
+                </p>
+              )}
+
+              {personWebsite && (
+                <p className="About__contacts_item">
+                  <span>Сайт:</span>{' '}
+                  <a href={personWebsite} target="_blank" rel="noopener noreferrer">
+                    {personWebsite}
+                  </a>
+                </p>
+              )}
+            </div>
+          </>
+        )}
+
+        {(addressPlace || email || mobile) && (
+          <>
+            <div className="About__divider" />
+            <div className="About__contacts">
+              <h3 className="About__contacts_subtitle">Кафедра: </h3>
+
+              {addressPlace && (
+                <p className="About__contacts_item">
+                  <span>Адрес:</span> {addressPlace}
+                </p>
+              )}
+
+              {email && (
+                <p className="About__contacts_item">
+                  <span>{mailName || 'E-mail:'}</span>{' '}
+                  <a href={`mailto:${email}`}>{email}</a>
+                </p>
+              )}
+
+              {mobile && (
+                <p className="About__contacts_item">
+                  <span>Телефон:</span>{' '}
+                  <a href={`tel:${mobile}`}>{mobile}</a>
+                </p>
+              )}
+            </div>
+          </>
         )}
       </div>
     </div>
